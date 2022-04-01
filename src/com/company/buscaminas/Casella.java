@@ -4,5 +4,4 @@ public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, Case
 
     private int posX;
     private int posY;
-
 }
