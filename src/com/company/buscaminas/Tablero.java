@@ -3,20 +3,26 @@ package com.company.buscaminas;
 public class Tablero {
 
     private int numCasellesHor;
-    private int getNumCasellesVer;
+    private int numCasellesVer;
     private Casella[] caselles;
 
-    public Tablero (int numCasellesHor, int getNumCasellesVer){
+    public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
-        this.getNumCasellesVer = getNumCasellesVer;
+        this.numCasellesVer = numCasellesVer;
     }
 
-    public void crearTablero(){
+    public Tablero crearTablero(){
         Input input = new Input();
         int dificultat;
 
         dificultat = input.triarDificultatTablero();
 
-        Tablero tablero = new Tablero(dificultat, dificultat);
+        return new Tablero(dificultat, dificultat);
     }
+
+    public void omplirTablero(){
+
+    }
+
+
 }
