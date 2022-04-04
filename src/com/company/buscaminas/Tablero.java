@@ -4,11 +4,12 @@ public class Tablero {
 
     private int numCasellesHor;
     private int numCasellesVer;
-    private Casella[] caselles = new Casella[numCasellesHor + numCasellesVer];
+    private Casella[] caselles;
 
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
+        this.caselles = new Casella[numCasellesHor + numCasellesVer];
     }
 
     public Tablero crearTablero(){
@@ -22,8 +23,11 @@ public class Tablero {
 
     public Tablero omplirTablero(){
         Tablero tablero = crearTablero();
-        for (int i = 0; i < tablero.getCaselles().length; i++){
-            tablero.getCaselles()[i].crearCasella();
+        for (int i = 0; i < tablero.getNumCasellesHor(); i++){
+            for (int j = 0; j < tablero.getNumCasellesVer(); j++){
+                Casella casella = new Casella(i, j);
+                tablero.getCaselles()[i] = casella;
+            }
         }
         return tablero;
     }
