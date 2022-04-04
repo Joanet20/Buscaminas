@@ -28,8 +28,8 @@ public class Input {
             case 2:
                 numCaselles = 24;
 
-            default:
-                Output.dificultatNoValida();
+            /*default:
+                Output.dificultatNoValida();*/
         }
 
         return numCaselles;

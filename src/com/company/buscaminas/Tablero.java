@@ -4,14 +4,15 @@ public class Tablero {
 
     private int numCasellesHor;
     private int numCasellesVer;
-    private Casella[] caselles = new Casella[numCasellesHor + numCasellesVer];
+    private Casella[] caselles;
 
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
+        this.caselles = new Casella[numCasellesHor + numCasellesVer];
     }
 
-    public Tablero crearTablero(){
+    public static Tablero crearTablero(){
         Input input = new Input();
         int dificultat;
 
@@ -20,10 +21,12 @@ public class Tablero {
         return new Tablero(dificultat, dificultat);
     }
 
-    public Tablero omplirTablero(){
+    public static Tablero omplirTablero(){
         Tablero tablero = crearTablero();
+        System.out.println(tablero.getCaselles().length);
         for (int i = 0; i < tablero.getCaselles().length; i++){
             tablero.getCaselles()[i].crearCasella();
+            System.out.println(tablero.getCaselles()[i]);
         }
         return tablero;
     }
