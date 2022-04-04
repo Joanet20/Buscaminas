@@ -10,20 +10,11 @@ public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, Case
         this.posY = posY;
     }
 
-    public Casella[] crearCasella(){
-        Input input = new Input();
-        int numCaselles = input.triarDificultatTablero();
-        Casella[] caselles = new Casella[numCaselles*2];
+    public int getPosX() {
+        return posX;
+    }
 
-
-        for (int k = 0; k < numCaselles; k++){
-            for (int i = 0; i < caselles.length; i++){
-                for (int j = 0; i < caselles.length; j++){
-                    Casella casella = new Casella(i, j);
-                    caselles[k] = casella;
-                }
-            }
-        }
-        return caselles;
+    public int getPosY() {
+        return posY;
     }
 }
