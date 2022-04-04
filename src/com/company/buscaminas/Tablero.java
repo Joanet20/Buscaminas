@@ -6,10 +6,14 @@ public class Tablero {
     private int numCasellesVer;
     private Casella[] caselles;
 
+    public Tablero (){
+
+    }
+
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
-        this.caselles = new Casella[numCasellesHor + numCasellesVer];
+        this.caselles = new Casella[numCasellesHor * numCasellesVer];
     }
 
     public Tablero crearTablero(){
@@ -30,6 +34,13 @@ public class Tablero {
             }
         }
         return tablero;
+    }
+
+    public void printTablero(){
+        Output output = new Output();
+        Tablero tablero = omplirTablero();
+
+        output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
     }
 
 

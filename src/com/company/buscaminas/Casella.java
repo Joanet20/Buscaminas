@@ -10,4 +10,11 @@ public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, Case
         this.posY = posY;
     }
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
 }
