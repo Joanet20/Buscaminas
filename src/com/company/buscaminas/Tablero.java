@@ -4,7 +4,7 @@ public class Tablero {
 
     private int numCasellesHor;
     private int numCasellesVer;
-    private Casella[] caselles;
+    private Casella[] caselles = new Casella[numCasellesHor + numCasellesVer];
 
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
@@ -20,8 +20,29 @@ public class Tablero {
         return new Tablero(dificultat, dificultat);
     }
 
-    public void omplirTablero(){
+    public Tablero omplirTablero(){
+        Tablero tablero = crearTablero();
+        for (int i = 0; i < tablero.getCaselles().length; i++){
+            tablero.getCaselles()[i].crearCasella();
+        }
+        return tablero;
+    }
 
+
+    public int getNumCasellesHor(){
+        return numCasellesHor;
+    }
+
+    public int getNumCasellesVer(){
+        return numCasellesVer;
+    }
+
+    public Casella[] getCaselles(){
+        return caselles;
+    }
+
+    public void setCaselles(Casella[] caselles){
+        this.caselles = caselles;
     }
 
 
