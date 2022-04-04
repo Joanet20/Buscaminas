@@ -38,4 +38,5 @@ public class Input {
         return numCaselles;
 
     }
+
 }

@@ -10,6 +10,12 @@ public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, Case
         this.posY = posY;
     }
 
+    public int assignarTipusCasella(){
+        int tipusTriat = (int) Math.random()*4;
+
+        return tipusTriat;
+    }
+
     public int getPosX() {
         return posX;
     }
