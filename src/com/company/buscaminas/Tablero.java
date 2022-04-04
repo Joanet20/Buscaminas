@@ -23,11 +23,8 @@ public class Tablero {
 
     public static Tablero omplirTablero(){
         Tablero tablero = crearTablero();
-        System.out.println(tablero.getCaselles().length);
-        for (int i = 0; i < tablero.getCaselles().length; i++){
-            tablero.getCaselles()[i].crearCasella();
-            System.out.println(tablero.getCaselles()[i]);
-        }
+
+
         return tablero;
     }
 

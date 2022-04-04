@@ -21,15 +21,18 @@ public class Input {
         switch (dificultatTriada){
             case 0:
                 numCaselles = 8;
+                break;
 
             case 1:
                 numCaselles = 16;
+                break;
 
             case 2:
                 numCaselles = 24;
+                break;
 
-            /*default:
-                Output.dificultatNoValida();*/
+            default:
+                Output.dificultatNoValida();
         }
 
         return numCaselles;
