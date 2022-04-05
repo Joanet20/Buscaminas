@@ -1,5 +1,7 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Mina;
+
 public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, CasellaEnBlanc {
 
     private int posX;
@@ -10,10 +12,11 @@ public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, Case
         this.posY = posY;
     }
 
-    public int assignarTipusCasella(){
-        int tipusTriat = (int) Math.random()*4;
+    public Casella generarMines(int x, int y){
+        int coordenadaX = (int) Math.random()*x;
+        int coordenadY = (int) Math.random()*y;
 
-        return tipusTriat;
+        return new Mina(coordenadaX, coordenadY);
     }
 
     public int getPosX() {
