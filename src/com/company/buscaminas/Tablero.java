@@ -47,6 +47,9 @@ public class Tablero {
                 break;
         }
 
+        for (int i = 0; i < numMines; i++){
+            tablero.getCaselles().add(new Mina().generarMines(tablero.getNumCasellesHor(), tablero.getNumCasellesVer()));
+        }
 
         return tablero;
     }

@@ -16,14 +16,14 @@ public class Output {
             separa.add(casellesPerFila * (i+1));
         }
 
-        int cont = 0;
+        int cont = -1;
 
         for (Casella casella : casellas){
             cont ++;
             if (separa.contains(cont)){
                 System.out.println();
             }
-            System.out.println("[" + casella.getPosX() + "," + casella.getPosY() + "]");
+            System.out.print("[" + casella.getPosX() + "," + casella.getPosY() + "]");
         }
     }
 }
