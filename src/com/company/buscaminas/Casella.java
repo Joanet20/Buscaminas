@@ -28,4 +28,9 @@ public class Casella {
     public int getPosY() {
         return posY;
     }
+
+    public void setPosicions(int posX, int posY){
+        this.posX = posX;
+        this.posY = posY;
+    }
 }

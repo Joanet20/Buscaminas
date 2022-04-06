@@ -10,7 +10,12 @@ public class Numero extends Casella {
         super(posX, posY);
     }
 
-    public int getMinesColindants(){
-        return minesColindants;
+    public Numero(int posX, int posY, int minesColindants) {
+        super(posX, posY);
+        this.minesColindants = minesColindants;
+    }
+
+    public void sumarMinaColindant(){
+        minesColindants++;
     }
 }

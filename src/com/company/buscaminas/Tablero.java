@@ -74,10 +74,61 @@ public class Tablero {
                 if (caselles[i][j] instanceof Mina){
 
                     if (caselles[i-1][j-1] == null){
-                        caselles[i-1][j-1] = new Numero(i, j);
+                        caselles[i-1][j-1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
                     } else if (caselles[i-1][j-1] instanceof Numero){
-                        ((Numero) caselles[i-1][j-1]).getMinesColindants();
+                        ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
                     }
+
+                    if (caselles[i][j-1] == null){
+                        caselles[i][j-1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i][j-1]).sumarMinaColindant();
+                    } else if (caselles[i][j-1] instanceof Numero){
+                        ((Numero) caselles[i][j-1]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i+1][j-1] == null){
+                        caselles[i+1][j-1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
+                    } else if (caselles[i+1][j-1] instanceof Numero){
+                        ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i-1][j] == null){
+                        caselles[i-1][j] = new Numero(i, j, 1);
+                        ((Numero) caselles[i-1][j]).sumarMinaColindant();
+                    } else if (caselles[i-1][j] instanceof Numero){
+                        ((Numero) caselles[i-1][j]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i+1][j] == null){
+                        caselles[i+1][j] = new Numero(i, j, 1);
+                        ((Numero) caselles[i+1][j]).sumarMinaColindant();
+                    } else if (caselles[i+1][j] instanceof Numero){
+                        ((Numero) caselles[i+1][j]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i-1][j+1] == null){
+                        caselles[i-1][j+1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
+                    } else if (caselles[i-1][j+1] instanceof Numero){
+                        ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i][j+1] == null){
+                        caselles[i][j+1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i][j+1]).sumarMinaColindant();
+                    } else if (caselles[i][j+1] instanceof Numero){
+                        ((Numero) caselles[i][j+1]).sumarMinaColindant();
+                    }
+
+                    if (caselles[i+1][j+1] == null){
+                        caselles[i+1][j+1] = new Numero(i, j, 1);
+                        ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
+                    } else if (caselles[i+1][j+1] instanceof Numero){
+                        ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
+                    }
+
 
                 }
             }
