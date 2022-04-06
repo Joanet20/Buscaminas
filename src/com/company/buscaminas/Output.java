@@ -8,7 +8,7 @@ public class Output {
         System.out.println("La dificultat triada no és vàlida");
     }
 
-    public void displayTablero(ArrayList<Casella> casellas, int casellesPerFila){
+    public void displayTablero(Casella[][] casellas, int casellesPerFila){
 
         ArrayList<Integer> separa = new ArrayList<>();
 
@@ -16,14 +16,11 @@ public class Output {
             separa.add(casellesPerFila * (i+1));
         }
 
-        int cont = -1;
-
-        for (Casella casella : casellas){
-            cont ++;
-            if (separa.contains(cont)){
-                System.out.println();
+        for (int i = 0; i < casellas.length; i++){
+            for (int j = 0; j < casellas[0].length; j++){
+                System.out.println("[" + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
             }
-            System.out.print("[" + casella.getPosX() + "," + casella.getPosY() + "]");
+
         }
     }
 }

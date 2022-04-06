@@ -8,7 +8,7 @@ public class Tablero {
 
     private int numCasellesHor;
     private int numCasellesVer;
-    private ArrayList<Casella> caselles;
+    private Casella[][] caselles;
 
     public Tablero (){
 
@@ -17,7 +17,7 @@ public class Tablero {
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
-        this.caselles = new ArrayList<>(numCasellesHor * numCasellesVer);
+        this.caselles = new Casella[numCasellesHor * numCasellesVer][numCasellesHor * numCasellesVer];
     }
 
     public Tablero crearTablero(){
@@ -47,19 +47,32 @@ public class Tablero {
                 break;
         }
 
-        for (int i = 0; i < numMines; i++){
-            Casella casellaMina = new Mina().generarMines(tablero.getNumCasellesHor(), tablero.getNumCasellesVer(), tablero.getCaselles(), i);
-            tablero.getCaselles().add(casellaMina);
-        }
+        generarMines(tablero.getNumCasellesHor(), tablero.getNumCasellesVer(), tablero.getCaselles(), numMines);
 
         return tablero;
+    }
+
+    public void generarMines(int x, int y, Casella[][] casellas, int numMines){
+        for (int i = 0; i < numMines; i++){
+            int coordenadaX = (int) Math.floor(Math.random()*x);
+            int coordenadY = (int) Math.floor(Math.random()*y);
+
+            if (casellas[coordenadaX][coordenadY] == null ||
+                    (casellas[coordenadaX][coordenadY].getPosX() != coordenadaX &&
+                            casellas[coordenadaX][coordenadY].getPosY() != coordenadY)){
+
+                casellas[coordenadaX][coordenadY] = new Mina(coordenadaX, coordenadY);
+            } else {
+                i--;
+            }
+        }
     }
 
     public void printTablero(){
         Output output = new Output();
         Tablero tablero = omplirTablero();
 
-        output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
+        //output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
     }
 
 
@@ -71,11 +84,11 @@ public class Tablero {
         return numCasellesVer;
     }
 
-    public ArrayList<Casella> getCaselles(){
+    public Casella[][] getCaselles(){
         return caselles;
     }
 
-    public void setCaselles(ArrayList<Casella> caselles){
+    public void setCaselles(Casella[][] caselles){
         this.caselles = caselles;
     }
 
