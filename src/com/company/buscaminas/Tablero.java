@@ -1,6 +1,7 @@
 package com.company.buscaminas;
 
 import com.company.buscaminas.TipusDeCasella.Mina;
+import com.company.buscaminas.TipusDeCasella.Numero;
 
 import java.util.ArrayList;
 
@@ -60,10 +61,25 @@ public class Tablero {
             if (casellas[coordenadaX][coordenadY] == null ||
                     (casellas[coordenadaX][coordenadY].getPosX() != coordenadaX &&
                             casellas[coordenadaX][coordenadY].getPosY() != coordenadY)){
-
                 casellas[coordenadaX][coordenadY] = new Mina(coordenadaX, coordenadY);
             } else {
                 i--;
+            }
+        }
+    }
+
+    public void generarNumero(Casella[][] caselles){
+        for (int i = 0; i < caselles.length; i++){
+            for (int j = 0; j < caselles[0].length; j++){
+                if (caselles[i][j] instanceof Mina){
+
+                    if (caselles[i-1][j-1] == null){
+                        caselles[i-1][j-1] = new Numero(i, j);
+                    } else if (caselles[i-1][j-1] instanceof Numero){
+                        ((Numero) caselles[i-1][j-1]).getMinesColindants();
+                    }
+
+                }
             }
         }
     }

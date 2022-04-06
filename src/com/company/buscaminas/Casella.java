@@ -5,7 +5,7 @@ import com.company.buscaminas.TipusDeCasella.Mina;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Casella implements CasellaMina, CasellaNumero, CasellaBandera, CasellaEnBlanc {
+public class Casella {
 
     private int posX;
     private int posY;
