@@ -49,6 +49,7 @@ public class Tablero {
         }
 
         generarMines(tablero.getNumCasellesHor(), tablero.getNumCasellesVer(), tablero.getCaselles(), numMines);
+        generarNumero(tablero.getCaselles());
 
         return tablero;
     }
@@ -62,6 +63,7 @@ public class Tablero {
                     (casellas[coordenadaX][coordenadY].getPosX() != coordenadaX &&
                             casellas[coordenadaX][coordenadY].getPosY() != coordenadY)){
                 casellas[coordenadaX][coordenadY] = new Mina(coordenadaX, coordenadY);
+                //System.out.println((i+1) + " " + casellas[coordenadaX][coordenadY].getPosX() + "," + casellas[coordenadaX][coordenadY].getPosY());
             } else {
                 i--;
             }
@@ -73,62 +75,77 @@ public class Tablero {
             for (int j = 0; j < caselles[0].length; j++){
                 if (caselles[i][j] instanceof Mina){
 
-                    if (caselles[i-1][j-1] == null){
-                        caselles[i-1][j-1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
-                    } else if (caselles[i-1][j-1] instanceof Numero){
-                        ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
+                    if ((i-1) > 0 && (j-1) > 0){
+                        if (caselles[i-1][j-1] == null){
+                            caselles[i-1][j-1] = new Numero(i, j, 1);
+                        } else if (caselles[i-1][j-1] instanceof Numero){
+                            ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i][j-1] == null){
-                        caselles[i][j-1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i][j-1]).sumarMinaColindant();
-                    } else if (caselles[i][j-1] instanceof Numero){
-                        ((Numero) caselles[i][j-1]).sumarMinaColindant();
+
+                    if ((j-1) > 0){
+                        if (caselles[i][j-1] == null){
+                            caselles[i][j-1] = new Numero(i, j, 1);
+                        } else if (caselles[i][j-1] instanceof Numero){
+                            ((Numero) caselles[i][j-1]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i+1][j-1] == null){
-                        caselles[i+1][j-1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
-                    } else if (caselles[i+1][j-1] instanceof Numero){
-                        ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
+
+                    if ((i+1) < caselles.length && (j-1) > 0){
+                        if (caselles[i+1][j-1] == null){
+                            caselles[i+1][j-1] = new Numero(i, j, 1);
+                        } else if (caselles[i+1][j-1] instanceof Numero){
+                            ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i-1][j] == null){
-                        caselles[i-1][j] = new Numero(i, j, 1);
-                        ((Numero) caselles[i-1][j]).sumarMinaColindant();
-                    } else if (caselles[i-1][j] instanceof Numero){
-                        ((Numero) caselles[i-1][j]).sumarMinaColindant();
+
+                    if ((i-1) > 0){
+                        if (caselles[i-1][j] == null){
+                            caselles[i-1][j] = new Numero(i, j, 1);
+                        } else if (caselles[i-1][j] instanceof Numero){
+                            ((Numero) caselles[i-1][j]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i+1][j] == null){
-                        caselles[i+1][j] = new Numero(i, j, 1);
-                        ((Numero) caselles[i+1][j]).sumarMinaColindant();
-                    } else if (caselles[i+1][j] instanceof Numero){
-                        ((Numero) caselles[i+1][j]).sumarMinaColindant();
+
+
+                    if ((i+1) < caselles.length){
+                        if (caselles[i+1][j] == null){
+                            caselles[i+1][j] = new Numero(i, j, 1);
+                        } else if (caselles[i+1][j] instanceof Numero){
+                            ((Numero) caselles[i+1][j]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i-1][j+1] == null){
-                        caselles[i-1][j+1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
-                    } else if (caselles[i-1][j+1] instanceof Numero){
-                        ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
+
+                    if ((i-1) > 0 && (j+1) < caselles[0].length){
+                        if (caselles[i-1][j+1] == null){
+                            caselles[i-1][j+1] = new Numero(i, j, 1);
+                        } else if (caselles[i-1][j+1] instanceof Numero){
+                            ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i][j+1] == null){
-                        caselles[i][j+1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i][j+1]).sumarMinaColindant();
-                    } else if (caselles[i][j+1] instanceof Numero){
-                        ((Numero) caselles[i][j+1]).sumarMinaColindant();
+
+                    if ((j+1) < caselles[0].length){
+                        if (caselles[i][j+1] == null){
+                            caselles[i][j+1] = new Numero(i, j, 1);
+                        } else if (caselles[i][j+1] instanceof Numero){
+                            ((Numero) caselles[i][j+1]).sumarMinaColindant();
+                        }
                     }
 
-                    if (caselles[i+1][j+1] == null){
-                        caselles[i+1][j+1] = new Numero(i, j, 1);
-                        ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
-                    } else if (caselles[i+1][j+1] instanceof Numero){
-                        ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
-                    }
 
+                    if ((i+1) < caselles.length && (j+1) < caselles[0].length){
+                        if (caselles[i+1][j+1] == null){
+                            caselles[i+1][j+1] = new Numero(i, j, 1);
+                        } else if (caselles[i+1][j+1] instanceof Numero){
+                            ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
+                        }
+                    }
 
                 }
             }

@@ -15,6 +15,10 @@ public class Numero extends Casella {
         this.minesColindants = minesColindants;
     }
 
+    public int getMinesColindants(){
+        return minesColindants;
+    }
+
     public void sumarMinaColindant(){
         minesColindants++;
     }
