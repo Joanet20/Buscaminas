@@ -18,7 +18,7 @@ public class Output {
 
         for (int i = 0; i < casellas.length; i++){
             for (int j = 0; j < casellas[0].length; j++){
-                System.out.println("[" + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
+                System.out.println("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
             }
 
         }

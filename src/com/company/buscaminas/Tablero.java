@@ -1,5 +1,6 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.EnBlanc;
 import com.company.buscaminas.TipusDeCasella.Mina;
 import com.company.buscaminas.TipusDeCasella.Numero;
 
@@ -48,16 +49,17 @@ public class Tablero {
                 break;
         }
 
-        generarMines(tablero.getNumCasellesHor(), tablero.getNumCasellesVer(), tablero.getCaselles(), numMines);
+        generarMines((tablero.getNumCasellesHor() * tablero.getNumCasellesVer()), tablero.getCaselles(), numMines);
         generarNumero(tablero.getCaselles());
+        generarBlancs(tablero.getCaselles());
 
         return tablero;
     }
 
-    public void generarMines(int x, int y, Casella[][] casellas, int numMines){
+    public void generarMines(int maxim, Casella[][] casellas, int numMines){
         for (int i = 0; i < numMines; i++){
-            int coordenadaX = (int) Math.floor(Math.random()*x);
-            int coordenadY = (int) Math.floor(Math.random()*y);
+            int coordenadaX = (int) Math.floor(Math.random()*maxim);
+            int coordenadY = (int) Math.floor(Math.random()*maxim);
 
             if (casellas[coordenadaX][coordenadY] == null ||
                     (casellas[coordenadaX][coordenadY].getPosX() != coordenadaX &&
@@ -77,7 +79,7 @@ public class Tablero {
 
                     if ((i-1) > 0 && (j-1) > 0){
                         if (caselles[i-1][j-1] == null){
-                            caselles[i-1][j-1] = new Numero(i, j, 1);
+                            caselles[i-1][j-1] = new Numero(i-1, j-1, 1);
                         } else if (caselles[i-1][j-1] instanceof Numero){
                             ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
                         }
@@ -86,7 +88,7 @@ public class Tablero {
 
                     if ((j-1) > 0){
                         if (caselles[i][j-1] == null){
-                            caselles[i][j-1] = new Numero(i, j, 1);
+                            caselles[i][j-1] = new Numero(i, j-1, 1);
                         } else if (caselles[i][j-1] instanceof Numero){
                             ((Numero) caselles[i][j-1]).sumarMinaColindant();
                         }
@@ -95,7 +97,7 @@ public class Tablero {
 
                     if ((i+1) < caselles.length && (j-1) > 0){
                         if (caselles[i+1][j-1] == null){
-                            caselles[i+1][j-1] = new Numero(i, j, 1);
+                            caselles[i+1][j-1] = new Numero(i+1, j-1, 1);
                         } else if (caselles[i+1][j-1] instanceof Numero){
                             ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
                         }
@@ -104,7 +106,7 @@ public class Tablero {
 
                     if ((i-1) > 0){
                         if (caselles[i-1][j] == null){
-                            caselles[i-1][j] = new Numero(i, j, 1);
+                            caselles[i-1][j] = new Numero(i-1, j, 1);
                         } else if (caselles[i-1][j] instanceof Numero){
                             ((Numero) caselles[i-1][j]).sumarMinaColindant();
                         }
@@ -114,7 +116,7 @@ public class Tablero {
 
                     if ((i+1) < caselles.length){
                         if (caselles[i+1][j] == null){
-                            caselles[i+1][j] = new Numero(i, j, 1);
+                            caselles[i+1][j] = new Numero(i+1, j, 1);
                         } else if (caselles[i+1][j] instanceof Numero){
                             ((Numero) caselles[i+1][j]).sumarMinaColindant();
                         }
@@ -123,7 +125,7 @@ public class Tablero {
 
                     if ((i-1) > 0 && (j+1) < caselles[0].length){
                         if (caselles[i-1][j+1] == null){
-                            caselles[i-1][j+1] = new Numero(i, j, 1);
+                            caselles[i-1][j+1] = new Numero(i-1, j+1, 1);
                         } else if (caselles[i-1][j+1] instanceof Numero){
                             ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
                         }
@@ -132,7 +134,7 @@ public class Tablero {
 
                     if ((j+1) < caselles[0].length){
                         if (caselles[i][j+1] == null){
-                            caselles[i][j+1] = new Numero(i, j, 1);
+                            caselles[i][j+1] = new Numero(i, j+1, 1);
                         } else if (caselles[i][j+1] instanceof Numero){
                             ((Numero) caselles[i][j+1]).sumarMinaColindant();
                         }
@@ -141,7 +143,7 @@ public class Tablero {
 
                     if ((i+1) < caselles.length && (j+1) < caselles[0].length){
                         if (caselles[i+1][j+1] == null){
-                            caselles[i+1][j+1] = new Numero(i, j, 1);
+                            caselles[i+1][j+1] = new Numero(i+1, j+1, 1);
                         } else if (caselles[i+1][j+1] instanceof Numero){
                             ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
                         }
@@ -152,11 +154,21 @@ public class Tablero {
         }
     }
 
+    public void generarBlancs(Casella[][] caselles){
+        for (int i = 0; i < caselles.length; i++){
+            for (int j = 0; j < caselles[0].length; j++){
+                if (caselles[i][j] == null){
+                    caselles[i][j] = new EnBlanc(i, j);
+                }
+            }
+        }
+    }
+
     public void printTablero(){
         Output output = new Output();
         Tablero tablero = omplirTablero();
 
-        //output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
+        output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
     }
 
 
