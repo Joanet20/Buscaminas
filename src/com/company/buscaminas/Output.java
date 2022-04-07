@@ -1,5 +1,7 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Numero;
+
 import java.util.ArrayList;
 
 public class Output {
@@ -17,8 +19,14 @@ public class Output {
         }
 
         for (int i = 0; i < casellas.length; i++){
+            System.out.println();
             for (int j = 0; j < casellas[0].length; j++){
-                System.out.println("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
+                if (casellas[i][j] instanceof Numero){
+                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + " - " + ((Numero) casellas[i][j]).getMinesColindants() + "]");
+                } else {
+                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
+                }
+
             }
 
         }

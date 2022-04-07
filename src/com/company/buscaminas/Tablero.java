@@ -19,7 +19,7 @@ public class Tablero {
     public Tablero (int numCasellesHor, int numCasellesVer){
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
-        this.caselles = new Casella[numCasellesHor * numCasellesVer][numCasellesHor * numCasellesVer];
+        this.caselles = new Casella[numCasellesHor][numCasellesVer];
     }
 
     public Tablero crearTablero(){
@@ -49,7 +49,7 @@ public class Tablero {
                 break;
         }
 
-        generarMines((tablero.getNumCasellesHor() * tablero.getNumCasellesVer()), tablero.getCaselles(), numMines);
+        generarMines(tablero.getNumCasellesHor(), tablero.getCaselles(), numMines);
         generarNumero(tablero.getCaselles());
         generarBlancs(tablero.getCaselles());
 
@@ -65,7 +65,6 @@ public class Tablero {
                     (casellas[coordenadaX][coordenadY].getPosX() != coordenadaX &&
                             casellas[coordenadaX][coordenadY].getPosY() != coordenadY)){
                 casellas[coordenadaX][coordenadY] = new Mina(coordenadaX, coordenadY);
-                //System.out.println((i+1) + " " + casellas[coordenadaX][coordenadY].getPosX() + "," + casellas[coordenadaX][coordenadY].getPosY());
             } else {
                 i--;
             }
