@@ -24,7 +24,7 @@ public class Jugador {
         this.esViu = esViu;
     }
 
-    public void destaparCasella(Casella[][] casellas){
+    public void destaparCasella(Casella[][] casellas, Jugador jugador){
 
         Input input = new Input();
         int[] coordenada = input.pasarCasella();
@@ -33,6 +33,16 @@ public class Jugador {
 
         if (!casellaActual.isDestapada()){
             casellaActual.setDestapada(true);
+            if (casellaActual instanceof Mina){
+                jugador.setEsViu(false);
+                for (int i = 0; i < casellas.length; i++){
+                    for (int j = 0; j < casellas[0].length; j++){
+                        if (casellas[i][j] instanceof Mina){
+                            casellas[i][j].setDestapada(true);
+                        }
+                    }
+                }
+            }
         } else {
             Output output = new Output();
             output.casellaDestapada();

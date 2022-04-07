@@ -163,9 +163,8 @@ public class Tablero {
         }
     }
 
-    public void printTablero(){
+    public void printTablero(Tablero tablero, Casella[][] caselles){
         Output output = new Output();
-        Tablero tablero = omplirTablero();
 
         output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
     }

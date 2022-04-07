@@ -26,7 +26,12 @@ public class Output {
                 if (!casellas[i][j].isDestapada()){
                     System.out.print("[" + "T" + "]");
                 } else {
-                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + "]");
+                    if (casellas[i][j] instanceof Numero){
+                        System.out.print("[" + ((Numero) casellas[i][j]).getMinesColindants() + "]");
+                    } else {
+                        System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + "]");
+                    }
+
                 }
 
             }

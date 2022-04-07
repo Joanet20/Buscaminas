@@ -7,8 +7,8 @@ public class Buscaminas {
         Tablero tabJugador = tablero.omplirTablero();
 
         while (jugador.isEsViu()){
-            tabJugador.printTablero();
-            jugador.destaparCasella(tablero.getCaselles());
+            tabJugador.printTablero(tabJugador, tabJugador.getCaselles());
+            jugador.destaparCasella(tabJugador.getCaselles(), jugador);
         }
     }
 }
