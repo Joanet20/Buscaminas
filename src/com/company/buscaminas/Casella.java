@@ -12,6 +12,7 @@ public class Casella {
     private int posX;
     private int posY;
     private String nom;
+    private boolean destapada;
 
     public Casella (){
 
@@ -20,6 +21,7 @@ public class Casella {
     public Casella(int posX, int posY){
         this.posX = posX;
         this.posY = posY;
+        this.destapada = false;
     }
 
 
@@ -30,6 +32,14 @@ public class Casella {
 
     public int getPosY() {
         return posY;
+    }
+
+    public boolean isDestapada(){
+        return destapada;
+    }
+
+    public void setDestapada(boolean destapada) {
+        this.destapada = destapada;
     }
 
     public void setPosicions(int posX, int posY){

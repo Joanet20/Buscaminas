@@ -21,14 +21,13 @@ public class Output {
         for (int i = 0; i < casellas.length; i++){
             System.out.println();
             for (int j = 0; j < casellas[0].length; j++){
-                if (casellas[i][j] instanceof Numero){
-                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + " - " + ((Numero) casellas[i][j]).getMinesColindants() + "]");
-                } else {
-                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
-                }
-
+                System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
             }
 
         }
+    }
+
+    public void casellaDestapada(){
+        System.out.println("Aquesta casella ja està destapada!");
     }
 }

@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Buscaminas buscaminas = new Buscaminas();
+        /*Buscaminas buscaminas = new Buscaminas();
         Tablero tablero = new Tablero();
 
-        buscaminas.jugar(tablero);
+        buscaminas.jugar(tablero);*/
     }
 }
