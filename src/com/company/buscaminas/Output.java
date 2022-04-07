@@ -1,5 +1,6 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Bandera;
 import com.company.buscaminas.TipusDeCasella.Mina;
 import com.company.buscaminas.TipusDeCasella.Numero;
 
@@ -54,5 +55,13 @@ public class Output {
 
     public void hasPerdut(){
         System.out.println("Has perdut");
+    }
+
+    public void accio(){
+        System.out.println("Vols destapar una casella o posar una bandera? 0-Destapar, 1-Posar bandera");
+    }
+
+    public void accioInvalida(){
+        System.out.println("La acció triada no és valida!");
     }
 }

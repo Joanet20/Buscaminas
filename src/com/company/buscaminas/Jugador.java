@@ -1,5 +1,6 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Bandera;
 import com.company.buscaminas.TipusDeCasella.Mina;
 
 public class Jugador {
@@ -53,7 +54,11 @@ public class Jugador {
     }
 
 
-    public void posarBandera(){
+    public void posarBandera(Casella[][] casellas){
 
+        Input input = new Input();
+        int[] coordenada = input.pasarCasella();
+
+        casellas[coordenada[0]][coordenada[1]] = new Bandera(coordenada[0], coordenada[1]);
     }
 }

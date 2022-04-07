@@ -54,4 +54,16 @@ public class Input {
         return coordenada;
     }
 
+    public int triarAccio(){
+        Output output = new Output();
+
+        int tipoAccio;
+        output.accio();
+
+        Scanner sc = new Scanner(System.in);
+        tipoAccio = sc.nextInt();
+
+        return tipoAccio;
+    }
+
 }
