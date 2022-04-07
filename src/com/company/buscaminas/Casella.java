@@ -14,6 +14,7 @@ public class Casella {
     private int posY;
     private String nom;
     private boolean destapada;
+    private boolean esBandera;
 
     public Casella (){
 
@@ -23,6 +24,7 @@ public class Casella {
         this.posX = posX;
         this.posY = posY;
         this.destapada = false;
+        this.esBandera = false;
     }
 
 
@@ -41,6 +43,10 @@ public class Casella {
 
     public void setDestapada(boolean destapada) {
         this.destapada = destapada;
+    }
+
+    public boolean isEsBandera() {
+        return esBandera;
     }
 
     public void setPosicions(int posX, int posY){

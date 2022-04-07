@@ -3,10 +3,13 @@ package com.company.buscaminas;
 import com.company.buscaminas.TipusDeCasella.Bandera;
 import com.company.buscaminas.TipusDeCasella.Mina;
 
+import java.util.ArrayList;
+
 public class Jugador {
 
     private Tablero tablero;
     private boolean esViu;
+    private ArrayList<Casella> llistaBanderas = new ArrayList<>();
 
     public Jugador (Tablero tablero){
         this.tablero = tablero;
@@ -23,6 +26,10 @@ public class Jugador {
 
     public void setEsViu(boolean esViu) {
         this.esViu = esViu;
+    }
+
+    public ArrayList<Casella> getLlistaBanderas() {
+        return llistaBanderas;
     }
 
     public void destaparCasella(Casella[][] casellas, Jugador jugador){
@@ -54,11 +61,11 @@ public class Jugador {
     }
 
 
-    public void posarBandera(Casella[][] casellas){
+    public void posarBandera(Casella casella){
 
-        Input input = new Input();
-        int[] coordenada = input.pasarCasella();
 
-        casellas[coordenada[0]][coordenada[1]] = new Bandera(coordenada[0], coordenada[1]);
+
     }
+
+
 }

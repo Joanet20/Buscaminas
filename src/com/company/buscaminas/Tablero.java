@@ -163,10 +163,10 @@ public class Tablero {
         }
     }
 
-    public void printTablero(Tablero tablero, Casella[][] caselles){
+    public void printTablero(Tablero tablero, Casella[][] caselles, Jugador jugador){
         Output output = new Output();
 
-        output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor());
+        output.displayTablero(tablero.getCaselles(), tablero.getNumCasellesHor(), jugador);
     }
 
 

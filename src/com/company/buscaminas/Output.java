@@ -12,9 +12,10 @@ public class Output {
         System.out.println("La dificultat triada no és vàlida");
     }
 
-    public void displayTablero(Casella[][] casellas, int casellesPerFila){
+    public void displayTablero(Casella[][] casellas, int casellesPerFila, Jugador jugador){
 
         ArrayList<Integer> separa = new ArrayList<>();
+        String flag = "T";
 
         for (int i = 0; i < casellesPerFila; i++){
             separa.add(casellesPerFila * (i+1));
@@ -25,7 +26,14 @@ public class Output {
             System.out.println();
             for (int j = 0; j < casellas[0].length; j++){
                 if (!casellas[i][j].isDestapada()){
-                    System.out.print("[" + "T" + "]");
+                    flag = "T";
+                    for (Casella bandera : jugador.getLlistaBanderas()){
+                        if (bandera.getPosX() == casellas[i][j].getPosX() &&
+                                bandera.getPosY() == casellas[i][j].getPosY()){
+                            flag = "F";
+                        }
+                    }
+                    System.out.print("[" + flag + "]");
                 } else {
                     if (casellas[i][j] instanceof Numero){
                         System.out.print("[" + ((Numero) casellas[i][j]).getMinesColindants() + "]");
