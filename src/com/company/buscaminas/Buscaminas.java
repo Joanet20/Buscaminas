@@ -10,5 +10,7 @@ public class Buscaminas {
             tabJugador.printTablero(tabJugador, tabJugador.getCaselles());
             jugador.destaparCasella(tabJugador.getCaselles(), jugador);
         }
+
+        tabJugador.printTablero(tabJugador, tabJugador.getCaselles());
     }
 }

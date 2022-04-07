@@ -51,4 +51,8 @@ public class Output {
     public void triarCoordenadaY(){
         System.out.println("Tria una coordenada Y");
     }
+
+    public void hasPerdut(){
+        System.out.println("Has perdut");
+    }
 }

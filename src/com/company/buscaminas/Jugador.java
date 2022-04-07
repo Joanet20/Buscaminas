@@ -35,6 +35,8 @@ public class Jugador {
             casellaActual.setDestapada(true);
             if (casellaActual instanceof Mina){
                 jugador.setEsViu(false);
+                Output output = new Output();
+                output.hasPerdut();
                 for (int i = 0; i < casellas.length; i++){
                     for (int j = 0; j < casellas[0].length; j++){
                         if (casellas[i][j] instanceof Mina){
@@ -47,6 +49,11 @@ public class Jugador {
             Output output = new Output();
             output.casellaDestapada();
         }
+
+    }
+
+
+    public void posarBandera(){
 
     }
 }
