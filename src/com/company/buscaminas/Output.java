@@ -1,5 +1,6 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Mina;
 import com.company.buscaminas.TipusDeCasella.Numero;
 
 import java.util.ArrayList;
@@ -18,16 +19,31 @@ public class Output {
             separa.add(casellesPerFila * (i+1));
         }
 
+        System.out.println("T-Tapada, B-En blanc, M-Mina, F-Bandera");
         for (int i = 0; i < casellas.length; i++){
             System.out.println();
             for (int j = 0; j < casellas[0].length; j++){
-                System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + " - " + casellas[i][j].getPosX() + "," + casellas[i][j].getPosY() + "]");
+                if (!casellas[i][j].isDestapada()){
+                    System.out.print("[" + "T" + "]");
+                } else {
+                    System.out.print("[" + casellas[i][j].getNom(casellas[i][j]) + "]");
+                }
+
             }
 
         }
+        System.out.println();
     }
 
     public void casellaDestapada(){
         System.out.println("Aquesta casella ja està destapada!");
+    }
+
+    public void triarCoordenadaX(){
+        System.out.println("Tria una coordenada X");
+    }
+
+    public void triarCoordenadaY(){
+        System.out.println("Tria una coordenada Y");
     }
 }

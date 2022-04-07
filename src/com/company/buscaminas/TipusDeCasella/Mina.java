@@ -9,7 +9,7 @@ public class Mina extends Casella implements CasellaMina {
 
     public Mina(int posX, int posY) {
         super(posX, posY);
-        this.nom = "Mina";
+        this.nom = "M";
     }
 
     public Mina(){

@@ -9,6 +9,6 @@ public class EnBlanc extends Casella {
 
     public EnBlanc(int posX, int posY) {
         super(posX, posY);
-        this.nom = "Blanc";
+        this.nom = "B";
     }
 }

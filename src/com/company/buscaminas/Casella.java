@@ -1,5 +1,6 @@
 package com.company.buscaminas;
 
+import com.company.buscaminas.TipusDeCasella.Bandera;
 import com.company.buscaminas.TipusDeCasella.EnBlanc;
 import com.company.buscaminas.TipusDeCasella.Mina;
 import com.company.buscaminas.TipusDeCasella.Numero;
@@ -52,11 +53,13 @@ public class Casella {
         String tipus = "";
 
         if (casella instanceof Mina){
-            tipus = "Mina";
+            tipus = "M";
         } else if (casella instanceof Numero){
-            tipus = "Numero";
+
         } else if (casella instanceof EnBlanc){
-            tipus = "Blanc";
+            tipus = "B";
+        } else if (casella instanceof Bandera){
+            tipus = "F";
         }
         return tipus;
     }

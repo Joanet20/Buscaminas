@@ -39,4 +39,19 @@ public class Input {
 
     }
 
+    public int[] pasarCasella(){
+        int[] coordenada = new int[2];
+        Output output = new Output();
+
+        Scanner sc = new Scanner(System.in);
+
+        output.triarCoordenadaX();
+        coordenada[0] = sc.nextInt();
+
+        output.triarCoordenadaY();
+        coordenada[1] = sc.nextInt();
+
+        return coordenada;
+    }
+
 }
