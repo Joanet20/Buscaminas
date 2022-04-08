@@ -167,36 +167,36 @@ public class Tablero {
         int x = casella.getPosX();
         int y = casella.getPosY();
 
-        if (x-1 > 0 && y-1 > 0){
+        if (x-1 > 0 && y-1 > 0 && (casellas[x-1][y-1] instanceof EnBlanc || casellas[x-1][y-1] instanceof Numero)){
             casellas[x-1][y-1].setDestapada(true);
         }
 
-        if (y-1 > 0){
+        if (y-1 > 0 && (casellas[x][y-1] instanceof EnBlanc || casellas[x][y-1] instanceof Numero)){
             casellas[x][y-1].setDestapada(true);
         }
 
-        if (x+1 < casellas.length && y-1 > 0){
+        if (x+1 < casellas.length && y-1 > 0 && (casellas[x+1][y-1] instanceof EnBlanc || casellas[x+1][y-1] instanceof Numero)){
             casellas[x+1][y-1].setDestapada(true);
         }
 
-        if (x-1 > 0){
+        if (x-1 > 0 && (casellas[x-1][y] instanceof EnBlanc || casellas[x-1][y] instanceof Numero)){
             casellas[x-1][y].setDestapada(true);
         }
 
-        if (x+1 > 0){
+        if (x+1 > 0 && (casellas[x+1][y] instanceof EnBlanc || casellas[x+1][y] instanceof Numero)){
             casellas[x+1][y].setDestapada(true);
         }
 
-        if (x-1 > 0 && y+1 < casellas.length){
+        if (x-1 > 0 && y+1 < casellas.length && (casellas[x-1][y+1] instanceof EnBlanc || casellas[x-1][y+1] instanceof Numero)){
             casellas[x-1][y+1].setDestapada(true);
         }
 
-        if (y+1 < casellas.length){
+        if (y+1 < casellas.length && (casellas[x][y+1] instanceof EnBlanc || casellas[x][y+1] instanceof Numero)){
             casellas[x][y+1].setDestapada(true);
         }
 
-        if (x+1 < casellas.length && y+1 < casellas.length){
-            casellas[x-1][y+1].setDestapada(true);
+        if (x+1 < casellas.length && y+1 < casellas.length && (casellas[x+1][y+1] instanceof EnBlanc || casellas[x+1][y+1] instanceof Numero)){
+            casellas[x+1][y+1].setDestapada(true);
         }
     }
 
