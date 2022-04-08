@@ -167,36 +167,46 @@ public class Tablero {
         int x = casella.getPosX();
         int y = casella.getPosY();
 
+        ArrayList<Casella> casellesColindantsAptes = new ArrayList<>();
+
         if (x-1 > 0 && y-1 > 0 && (casellas[x-1][y-1] instanceof EnBlanc || casellas[x-1][y-1] instanceof Numero)){
             casellas[x-1][y-1].setDestapada(true);
+            casellesColindantsAptes.add(0, casellas[x-1][y-1]);
         }
 
         if (y-1 > 0 && (casellas[x][y-1] instanceof EnBlanc || casellas[x][y-1] instanceof Numero)){
             casellas[x][y-1].setDestapada(true);
+            casellesColindantsAptes.add(1, casellas[x][y-1]);
         }
 
         if (x+1 < casellas.length && y-1 > 0 && (casellas[x+1][y-1] instanceof EnBlanc || casellas[x+1][y-1] instanceof Numero)){
             casellas[x+1][y-1].setDestapada(true);
+            casellesColindantsAptes.add(2, casellas[x+1][y-1]);
         }
 
         if (x-1 > 0 && (casellas[x-1][y] instanceof EnBlanc || casellas[x-1][y] instanceof Numero)){
             casellas[x-1][y].setDestapada(true);
+            casellesColindantsAptes.add(3, casellas[x-1][y]);
         }
 
         if (x+1 > 0 && (casellas[x+1][y] instanceof EnBlanc || casellas[x+1][y] instanceof Numero)){
             casellas[x+1][y].setDestapada(true);
+            casellesColindantsAptes.add(4, casellas[x+1][y]);
         }
 
         if (x-1 > 0 && y+1 < casellas.length && (casellas[x-1][y+1] instanceof EnBlanc || casellas[x-1][y+1] instanceof Numero)){
             casellas[x-1][y+1].setDestapada(true);
+            casellesColindantsAptes.add(5, casellas[x-1][y+1]);
         }
 
         if (y+1 < casellas.length && (casellas[x][y+1] instanceof EnBlanc || casellas[x][y+1] instanceof Numero)){
             casellas[x][y+1].setDestapada(true);
+            casellesColindantsAptes.add(6, casellas[x][y+1]);
         }
 
         if (x+1 < casellas.length && y+1 < casellas.length && (casellas[x+1][y+1] instanceof EnBlanc || casellas[x+1][y+1] instanceof Numero)){
             casellas[x+1][y+1].setDestapada(true);
+            casellesColindantsAptes.add(7, casellas[x+1][y+1]);
         }
     }
 
