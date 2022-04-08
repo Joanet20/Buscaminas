@@ -163,6 +163,43 @@ public class Tablero {
         }
     }
 
+    public void destaparBlancs(Casella casella, Casella[][] casellas){
+        int x = casella.getPosX();
+        int y = casella.getPosY();
+
+        if (x-1 > 0 && y-1 > 0){
+            casellas[x-1][y-1].setDestapada(true);
+        }
+
+        if (y-1 > 0){
+            casellas[x][y-1].setDestapada(true);
+        }
+
+        if (x+1 < casellas.length && y-1 > 0){
+            casellas[x+1][y-1].setDestapada(true);
+        }
+
+        if (x-1 > 0){
+            casellas[x-1][y].setDestapada(true);
+        }
+
+        if (x+1 > 0){
+            casellas[x+1][y].setDestapada(true);
+        }
+
+        if (x-1 > 0 && y+1 < casellas.length){
+            casellas[x-1][y+1].setDestapada(true);
+        }
+
+        if (y+1 < casellas.length){
+            casellas[x][y+1].setDestapada(true);
+        }
+
+        if (x+1 < casellas.length && y+1 < casellas.length){
+            casellas[x-1][y+1].setDestapada(true);
+        }
+    }
+
     public void printTablero(Tablero tablero, Casella[][] caselles, Jugador jugador){
         Output output = new Output();
 

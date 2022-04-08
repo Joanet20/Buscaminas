@@ -19,6 +19,7 @@ public class Buscaminas {
                     break;
                 case 2:
                     jugador.llevarBandera(tabJugador.getCaselles());
+                    break;
                 default:
                     Output output = new Output();
                     output.accioInvalida();

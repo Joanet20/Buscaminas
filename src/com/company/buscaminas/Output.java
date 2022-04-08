@@ -69,4 +69,12 @@ public class Output {
     public void accioInvalida(){
         System.out.println("La acció triada no és valida!");
     }
+
+    public void banderaJaPosada(){
+        System.out.println("Ja hi ha una bandera posada!");
+    }
+
+    public void banderaNoPosada(){
+        System.out.println("No pots llevar cap bandera perque no n'hi ha!");
+    }
 }

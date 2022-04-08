@@ -1,6 +1,7 @@
 package com.company.buscaminas;
 
 import com.company.buscaminas.TipusDeCasella.Bandera;
+import com.company.buscaminas.TipusDeCasella.EnBlanc;
 import com.company.buscaminas.TipusDeCasella.Mina;
 
 import java.util.ArrayList;
@@ -53,6 +54,10 @@ public class Jugador {
                     }
                 }
             }
+
+            if (casellaActual instanceof EnBlanc){
+                jugador.getTablero().destaparBlancs(casellaActual, casellas);
+            }
         } else {
             Output output = new Output();
             output.casellaDestapada();
@@ -65,8 +70,12 @@ public class Jugador {
         Input input = new Input();
         int[] coordenada = input.pasarCasella();
 
-        if (coordenada[0] == casellas[coordenada[0]][coordenada[1]].getPosX() && coordenada[1] == casellas[coordenada[0]][coordenada[1]].getPosY()){
+
+        if (!casellas[coordenada[0]][coordenada[1]].isEsBandera()){
             casellas[coordenada[0]][coordenada[1]].setEsBandera(true);
+        } else {
+            Output output = new Output();
+            output.banderaJaPosada();
         }
     }
 
@@ -74,8 +83,11 @@ public class Jugador {
         Input input = new Input();
         int[] coordenada = input.pasarCasella();
 
-        if (coordenada[0] == casellas[coordenada[0]][coordenada[1]].getPosX() && coordenada[1] == casellas[coordenada[0]][coordenada[1]].getPosY()){
+        if (casellas[coordenada[0]][coordenada[1]].isEsBandera()){
             casellas[coordenada[0]][coordenada[1]].setEsBandera(false);
+        } else {
+            Output output = new Output();
+            output.banderaNoPosada();
         }
     }
 
