@@ -61,10 +61,22 @@ public class Jugador {
     }
 
 
-    public void posarBandera(Casella casella){
+    public void posarBandera(Casella[][] casellas){
+        Input input = new Input();
+        int[] coordenada = input.pasarCasella();
 
+        if (coordenada[0] == casellas[coordenada[0]][coordenada[1]].getPosX() && coordenada[1] == casellas[coordenada[0]][coordenada[1]].getPosY()){
+            casellas[coordenada[0]][coordenada[1]].setEsBandera(true);
+        }
+    }
 
+    public void llevarBandera(Casella[][] casellas){
+        Input input = new Input();
+        int[] coordenada = input.pasarCasella();
 
+        if (coordenada[0] == casellas[coordenada[0]][coordenada[1]].getPosX() && coordenada[1] == casellas[coordenada[0]][coordenada[1]].getPosY()){
+            casellas[coordenada[0]][coordenada[1]].setEsBandera(false);
+        }
     }
 
 

@@ -15,8 +15,10 @@ public class Buscaminas {
                     jugador.destaparCasella(tabJugador.getCaselles(), jugador);
                     break;
                 case 1:
-                    jugador.posarBandera(jugador);
+                    jugador.posarBandera(tabJugador.getCaselles());
                     break;
+                case 2:
+                    jugador.llevarBandera(tabJugador.getCaselles());
                 default:
                     Output output = new Output();
                     output.accioInvalida();

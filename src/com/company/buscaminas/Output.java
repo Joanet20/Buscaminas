@@ -26,14 +26,11 @@ public class Output {
             System.out.println();
             for (int j = 0; j < casellas[0].length; j++){
                 if (!casellas[i][j].isDestapada()){
-                    flag = "T";
-                    for (Casella bandera : jugador.getLlistaBanderas()){
-                        if (bandera.getPosX() == casellas[i][j].getPosX() &&
-                                bandera.getPosY() == casellas[i][j].getPosY()){
-                            flag = "F";
-                        }
+                    if (casellas[i][j].isEsBandera()){
+                        System.out.print("[" + "F" + "]");
+                    } else {
+                        System.out.print("[" + "T" + "]");
                     }
-                    System.out.print("[" + flag + "]");
                 } else {
                     if (casellas[i][j] instanceof Numero){
                         System.out.print("[" + ((Numero) casellas[i][j]).getMinesColindants() + "]");
@@ -66,7 +63,7 @@ public class Output {
     }
 
     public void accio(){
-        System.out.println("Vols destapar una casella o posar una bandera? 0-Destapar, 1-Posar bandera");
+        System.out.println("Vols destapar una casella o posar una bandera? 0-Destapar, 1-Posar bandera, 2-Llevar bandera");
     }
 
     public void accioInvalida(){

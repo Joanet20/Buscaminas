@@ -49,6 +49,10 @@ public class Casella {
         return esBandera;
     }
 
+    public void setEsBandera(boolean esBandera) {
+        this.esBandera = esBandera;
+    }
+
     public void setPosicions(int posX, int posY){
         this.posX = posX;
         this.posY = posY;
