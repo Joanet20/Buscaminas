@@ -15,6 +15,7 @@ public class Casella {
     private String nom;
     private boolean destapada;
     private boolean esBandera;
+    private ArrayList<Casella> casellesColindants = new ArrayList<>();
 
     public Casella (){
 
@@ -72,5 +73,9 @@ public class Casella {
             tipus = "F";
         }
         return tipus;
+    }
+
+    public ArrayList<Casella> getCasellesColindants() {
+        return casellesColindants;
     }
 }
