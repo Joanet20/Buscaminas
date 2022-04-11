@@ -132,9 +132,11 @@ public class Tablero {
     public void generarNumero(Casella[][] caselles){
         for (int i = 0; i < caselles.length; i++){
             for (int j = 0; j < caselles[0].length; j++){
+
+
                 if (caselles[i][j] instanceof Mina){
 
-                    if ((i-1) > 0 && (j-1) > 0){
+                    if ((i-1) >= 0 && (j-1) >= 0){
                         if (caselles[i-1][j-1] == null){
                             caselles[i-1][j-1] = new Numero(i-1, j-1, 1);
                         } else if (caselles[i-1][j-1] instanceof Numero){
@@ -143,7 +145,7 @@ public class Tablero {
                     }
 
 
-                    if ((j-1) > 0){
+                    if ((j-1) >= 0){
                         if (caselles[i][j-1] == null){
                             caselles[i][j-1] = new Numero(i, j-1, 1);
                         } else if (caselles[i][j-1] instanceof Numero){
@@ -152,7 +154,7 @@ public class Tablero {
                     }
 
 
-                    if ((i+1) < caselles.length && (j-1) > 0){
+                    if ((i+1) < caselles.length && (j-1) >= 0){
                         if (caselles[i+1][j-1] == null){
                             caselles[i+1][j-1] = new Numero(i+1, j-1, 1);
                         } else if (caselles[i+1][j-1] instanceof Numero){
@@ -161,7 +163,7 @@ public class Tablero {
                     }
 
 
-                    if ((i-1) > 0){
+                    if ((i-1) >= 0){
                         if (caselles[i-1][j] == null){
                             caselles[i-1][j] = new Numero(i-1, j, 1);
                         } else if (caselles[i-1][j] instanceof Numero){
@@ -180,7 +182,7 @@ public class Tablero {
                     }
 
 
-                    if ((i-1) > 0 && (j+1) < caselles[0].length){
+                    if ((i-1) >= 0 && (j+1) < caselles[0].length){
                         if (caselles[i-1][j+1] == null){
                             caselles[i-1][j+1] = new Numero(i-1, j+1, 1);
                         } else if (caselles[i-1][j+1] instanceof Numero){
@@ -228,6 +230,12 @@ public class Tablero {
         for (Casella casellaActual : casella.getCasellesColindants()){
             if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc || casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof Numero){
                 casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
+
+                for (Casella casellaColindantActual : casellas[casellaActual.getPosX()][casellaActual.getPosY()].getCasellesColindants()){
+                    if (casellas[casellaColindantActual.getPosX()][casellaColindantActual.getPosY()] instanceof EnBlanc){
+                        casellas[casellaColindantActual.getPosX()][casellaColindantActual.getPosY()].setDestapada(true);
+                    }
+                }
             }
         }
     }
