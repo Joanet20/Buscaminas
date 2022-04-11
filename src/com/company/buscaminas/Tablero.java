@@ -11,6 +11,7 @@ public class Tablero {
     private int numCasellesHor;
     private int numCasellesVer;
     private Casella[][] caselles;
+    private int numMines;
 
     public Tablero (){
 
@@ -20,6 +21,15 @@ public class Tablero {
         this.numCasellesHor = numCasellesHor;
         this.numCasellesVer = numCasellesVer;
         this.caselles = new Casella[numCasellesHor][numCasellesVer];
+    }
+
+
+    public int getNumMines() {
+        return numMines;
+    }
+
+    public void setNumMines(int numMines) {
+        this.numMines = numMines;
     }
 
     public Tablero crearTablero(){
@@ -37,15 +47,15 @@ public class Tablero {
 
         switch (tablero.getNumCasellesHor()){
             case 8:
-                numMines = 10;
+                tablero.setNumMines(10);
                 break;
 
             case 16:
-                numMines = 40;
+                tablero.setNumMines(40);
                 break;
 
             case 24:
-                numMines = 99;
+                tablero.setNumMines(99);
                 break;
         }
 
@@ -63,8 +73,6 @@ public class Tablero {
 
                 int x = casellas[i][j].getPosX();
                 int y = casellas[i][j].getPosY();
-
-                System.out.println(y + " " + x);
 
                 if (x-1 >= 0 && y-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x-1, y-1));
@@ -96,9 +104,6 @@ public class Tablero {
 
                 if (x+1 < casellas.length && y+1 < casellas.length){
                     casellas[i][j].getCasellesColindants().add(new Casella(x+1, y+1));
-                }
-                for (Casella casAct : casellas[j][i].getCasellesColindants()){
-                    System.out.println("Casella: " + casAct.getPosX() + "," + casAct.getPosY());
                 }
             }
         }
@@ -220,10 +225,6 @@ public class Tablero {
         for (Casella casellaActual : casella.getCasellesColindants()){
             if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc || casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof Numero){
                 casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
-
-                if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc){
-                    casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
-                }
             }
         }
     }

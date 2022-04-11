@@ -77,4 +77,8 @@ public class Output {
     public void banderaNoPosada(){
         System.out.println("No pots llevar cap bandera perque no n'hi ha!");
     }
+
+    public void win(){
+        System.out.println("Has guanyat la partida");
+    }
 }
