@@ -227,13 +227,24 @@ public class Tablero {
         int x = casella.getPosX();
         int y = casella.getPosY();
 
+        ArrayList<Casella> casellesGuardades = new ArrayList<>();
+
         for (Casella casellaActual : casella.getCasellesColindants()){
             if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc || casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof Numero){
                 casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
+                casellesGuardades.add(casellas[casellaActual.getPosX()][casellaActual.getPosY()]);
+
 
                 for (Casella casellaColindantActual : casellas[casellaActual.getPosX()][casellaActual.getPosY()].getCasellesColindants()){
                     if (casellas[casellaColindantActual.getPosX()][casellaColindantActual.getPosY()] instanceof EnBlanc){
                         casellas[casellaColindantActual.getPosX()][casellaColindantActual.getPosY()].setDestapada(true);
+
+                        for (Casella casellaGuardada : casellesGuardades){
+                            if (casellas[casellaGuardada.getPosX()][casellaGuardada.getPosY()] instanceof EnBlanc){
+                                casellas[casellaGuardada.getPosX()][casellaGuardada.getPosY()].setDestapada(true);
+                            }
+                        }
+
                     }
                 }
             }
