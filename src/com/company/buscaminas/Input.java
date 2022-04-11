@@ -45,10 +45,10 @@ public class Input {
 
         Scanner sc = new Scanner(System.in);
 
-        output.triarCoordenadaX();
+        output.triarCoordenadaY();
         coordenada[0] = sc.nextInt();
 
-        output.triarCoordenadaY();
+        output.triarCoordenadaX();
         coordenada[1] = sc.nextInt();
 
         return coordenada;

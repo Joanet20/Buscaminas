@@ -49,10 +49,10 @@ public class Tablero {
                 break;
         }
 
-        omplirCasellesColindants(tablero.getCaselles());
         generarMines(tablero.getNumCasellesHor(), tablero.getCaselles(), numMines);
         generarNumero(tablero.getCaselles());
         generarBlancs(tablero.getCaselles());
+        omplirCasellesColindants(tablero.getCaselles());
 
         return tablero;
     }
@@ -64,40 +64,46 @@ public class Tablero {
                 int x = casellas[i][j].getPosX();
                 int y = casellas[i][j].getPosY();
 
-                if (x-1 > 0 && y-1 > 0 && (casellas[x-1][y-1] instanceof EnBlanc || casellas[x-1][y-1] instanceof Numero)){
+                System.out.println(y + " " + x);
+
+                if (x-1 >= 0 && y-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x-1, y-1));
                 }
 
-                if (y-1 > 0 && (casellas[x][y-1] instanceof EnBlanc || casellas[x][y-1] instanceof Numero)){
+                if (y-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x, y-1));
                 }
 
-                if (x+1 < casellas.length && y-1 > 0 && (casellas[x+1][y-1] instanceof EnBlanc || casellas[x+1][y-1] instanceof Numero)){
+                if (x+1 <= casellas.length && y-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x+1, y-1));
                 }
 
-                if (x-1 > 0 && (casellas[x-1][y] instanceof EnBlanc || casellas[x-1][y] instanceof Numero)){
+                if (x-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x-1, y));
                 }
 
-                if (x+1 > 0 && (casellas[x+1][y] instanceof EnBlanc || casellas[x+1][y] instanceof Numero)){
+                if (x+1 < casellas.length){
                     casellas[i][j].getCasellesColindants().add(new Casella(x+1, y));
                 }
 
-                if (x-1 > 0 && y+1 < casellas.length && (casellas[x-1][y+1] instanceof EnBlanc || casellas[x-1][y+1] instanceof Numero)){
+                if (x-1 >= 0 && y+1 < casellas.length){
                     casellas[i][j].getCasellesColindants().add(new Casella(x-1, y+1));
                 }
 
-                if (y+1 < casellas.length && (casellas[x][y+1] instanceof EnBlanc || casellas[x][y+1] instanceof Numero)){
+                if (y+1 < casellas.length){
                     casellas[i][j].getCasellesColindants().add(new Casella(x, y+1));
                 }
 
-                if (x+1 < casellas.length && y+1 < casellas.length && (casellas[x+1][y+1] instanceof EnBlanc || casellas[x+1][y+1] instanceof Numero)){
+                if (x+1 < casellas.length && y+1 < casellas.length){
                     casellas[i][j].getCasellesColindants().add(new Casella(x+1, y+1));
                 }
-
+                for (Casella casAct : casellas[j][i].getCasellesColindants()){
+                    System.out.println("Casella: " + casAct.getPosX() + "," + casAct.getPosY());
+                }
             }
         }
+
+
     }
 
     public void generarMines(int maxim, Casella[][] casellas, int numMines){
@@ -211,67 +217,13 @@ public class Tablero {
         int x = casella.getPosX();
         int y = casella.getPosY();
 
-        if (x-1 > 0 && y-1 > 0 && (casellas[x-1][y-1] instanceof EnBlanc || casellas[x-1][y-1] instanceof Numero)){
-            casellas[x-1][y-1].setDestapada(true);
+        for (Casella casellaActual : casella.getCasellesColindants()){
+            if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc || casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof Numero){
+                casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
 
-            if (casellas[x-1][y-1] instanceof EnBlanc){
-                destaparBlancs(casellas[x-1][y-1], casellas);
-            }
-        }
-
-        if (y-1 > 0 && (casellas[x][y-1] instanceof EnBlanc || casellas[x][y-1] instanceof Numero)){
-            casellas[x][y-1].setDestapada(true);
-
-            if (casellas[x][y-1] instanceof EnBlanc){
-                destaparBlancs(casellas[x][y-1], casellas);
-            }
-        }
-
-        if (x+1 < casellas.length && y-1 > 0 && (casellas[x+1][y-1] instanceof EnBlanc || casellas[x+1][y-1] instanceof Numero)){
-            casellas[x+1][y-1].setDestapada(true);
-
-            if (casellas[x+1][y-1] instanceof EnBlanc){
-                destaparBlancs(casellas[x+1][y-1], casellas);
-            }
-        }
-
-        if (x-1 > 0 && (casellas[x-1][y] instanceof EnBlanc || casellas[x-1][y] instanceof Numero)){
-            casellas[x-1][y].setDestapada(true);
-
-            if (casellas[x-1][y] instanceof EnBlanc){
-                destaparBlancs(casellas[x-1][y], casellas);
-            }
-        }
-
-        if (x+1 > 0 && (casellas[x+1][y] instanceof EnBlanc || casellas[x+1][y] instanceof Numero)){
-            casellas[x+1][y].setDestapada(true);
-
-            if (casellas[x+1][y] instanceof EnBlanc){
-                destaparBlancs(casellas[x+1][y], casellas);
-            }
-        }
-
-        if (x-1 > 0 && y+1 < casellas.length && (casellas[x-1][y+1] instanceof EnBlanc || casellas[x-1][y+1] instanceof Numero)){
-            casellas[x-1][y+1].setDestapada(true);
-
-            if (casellas[x-1][y+1] instanceof EnBlanc){
-                destaparBlancs(casellas[x-1][y+1], casellas);
-            }
-        }
-
-        if (y+1 < casellas.length && (casellas[x][y+1] instanceof EnBlanc || casellas[x][y+1] instanceof Numero)){
-            casellas[x][y+1].setDestapada(true);
-
-            if (casellas[x][y+1] instanceof EnBlanc){
-                destaparBlancs(casellas[x][y+1], casellas);
-            }
-        }
-
-        if (x+1 < casellas.length && y+1 < casellas.length && (casellas[x+1][y+1] instanceof EnBlanc || casellas[x+1][y+1] instanceof Numero)){
-            casellas[x+1][y+1].setDestapada(true);
-
-            if (casellas[x+1][y+1] instanceof EnBlanc){
-                destaparBlancs(casellas[x+1][y+1], casellas);
+                if (casellas[casellaActual.getPosX()][casellaActual.getPosY()] instanceof EnBlanc){
+                    casellas[casellaActual.getPosX()][casellaActual.getPosY()].setDestapada(true);
+                }
             }
         }
     }
