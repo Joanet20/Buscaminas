@@ -47,14 +47,17 @@ public class Tablero {
 
         switch (tablero.getNumCasellesHor()){
             case 8:
+                numMines = 10;
                 tablero.setNumMines(10);
                 break;
 
             case 16:
+                numMines = 40;
                 tablero.setNumMines(40);
                 break;
 
             case 24:
+                numMines = 99;
                 tablero.setNumMines(99);
                 break;
         }
@@ -82,7 +85,7 @@ public class Tablero {
                     casellas[i][j].getCasellesColindants().add(new Casella(x, y-1));
                 }
 
-                if (x+1 <= casellas.length && y-1 >= 0){
+                if (x+1 < casellas.length && y-1 >= 0){
                     casellas[i][j].getCasellesColindants().add(new Casella(x+1, y-1));
                 }
 
