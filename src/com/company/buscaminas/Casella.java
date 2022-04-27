@@ -53,11 +53,6 @@ public class Casella {
         this.esBandera = esBandera;
     }
 
-    public void setPosicions(int posX, int posY){
-        this.posX = posX;
-        this.posY = posY;
-    }
-
     public String getNom(Casella casella){
 
         String tipus = "";

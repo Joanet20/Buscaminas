@@ -5,11 +5,9 @@ import com.company.buscaminas.Casella;
 public class Numero extends Casella {
 
     private int minesColindants;
-    private String nom;
 
     public Numero(int posX, int posY) {
         super(posX, posY);
-        this.nom = "Numero";
     }
 
     public Numero(int posX, int posY, int minesColindants) {
