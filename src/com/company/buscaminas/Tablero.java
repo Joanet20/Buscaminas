@@ -77,42 +77,76 @@ public class Tablero {
                 int x = casellas[i][j].getPosX();
                 int y = casellas[i][j].getPosY();
 
-                if (x-1 >= 0 && y-1 >= 0){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x-1, y-1));
-                }
+                omplirColindantAdaltEsquerra(x, y, i, j, casellas);
 
-                if (y-1 >= 0){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x, y-1));
-                }
+                omplirColindantAdalt(x, y, i, j, casellas);
 
-                if (x+1 < casellas.length && y-1 >= 0){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x+1, y-1));
-                }
+                omplirColindantAdaltDreta(x, y, i, j, casellas);
 
-                if (x-1 >= 0){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x-1, y));
-                }
+                omplirColindantEsquerra(x, y, i, j, casellas);
 
-                if (x+1 < casellas.length){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x+1, y));
-                }
+                omplirColindantDreta(x, y, i, j, casellas);
 
-                if (x-1 >= 0 && y+1 < casellas.length){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x-1, y+1));
-                }
+                omplirColindantAbaixEsquerra(x, y, i, j, casellas);
 
-                if (y+1 < casellas.length){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x, y+1));
-                }
+                omplirColindantAbaix(x, y, i, j, casellas);
 
-                if (x+1 < casellas.length && y+1 < casellas.length){
-                    casellas[i][j].getCasellesColindants().add(new Casella(x+1, y+1));
-                }
+                omplirColindantAbaixDreta(x, y, i, j, casellas);
             }
         }
-
-
     }
+
+
+    public void omplirColindantAdaltEsquerra (int x, int y, int i, int j, Casella[][] casellas){
+        if (x-1 >= 0 && y-1 >= 0){
+            casellas[i][j].getCasellesColindants().add(new Casella(x-1, y-1));
+        }
+    }
+
+    public void omplirColindantAdalt (int x, int y, int i, int j, Casella[][] casellas){
+        if (y-1 >= 0){
+            casellas[i][j].getCasellesColindants().add(new Casella(x, y-1));
+        }
+    }
+
+    public void omplirColindantAdaltDreta (int x, int y, int i, int j, Casella[][] casellas){
+        if (x+1 < casellas.length && y-1 >= 0){
+            casellas[i][j].getCasellesColindants().add(new Casella(x+1, y-1));
+        }
+    }
+
+    public void omplirColindantEsquerra (int x, int y, int i, int j, Casella[][] casellas){
+        if (x-1 >= 0){
+            casellas[i][j].getCasellesColindants().add(new Casella(x-1, y));
+        }
+    }
+
+    public void omplirColindantDreta (int x, int y, int i, int j, Casella[][] casellas){
+        if (x+1 < casellas.length){
+            casellas[i][j].getCasellesColindants().add(new Casella(x+1, y));
+        }
+    }
+
+    public void omplirColindantAbaixEsquerra (int x, int y, int i, int j, Casella[][] casellas){
+        if (x-1 >= 0 && y+1 < casellas.length){
+            casellas[i][j].getCasellesColindants().add(new Casella(x-1, y+1));
+        }
+    }
+
+    public void omplirColindantAbaix (int x, int y, int i, int j, Casella[][] casellas){
+        if (y+1 < casellas.length){
+            casellas[i][j].getCasellesColindants().add(new Casella(x, y+1));
+        }
+    }
+
+    public void omplirColindantAbaixDreta (int x, int y, int i, int j, Casella[][] casellas){
+        if (x+1 < casellas.length && y+1 < casellas.length){
+            casellas[i][j].getCasellesColindants().add(new Casella(x+1, y+1));
+        }
+    }
+
+
+
 
     public void generarMines(int maxim, Casella[][] casellas, int numMines){
         for (int i = 0; i < numMines; i++){

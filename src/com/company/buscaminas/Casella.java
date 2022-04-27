@@ -12,7 +12,6 @@ public class Casella {
 
     private int posX;
     private int posY;
-    private String nom;
     private boolean destapada;
     private boolean esBandera;
     private ArrayList<Casella> casellesColindants = new ArrayList<>();
