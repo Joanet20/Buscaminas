@@ -32,6 +32,8 @@ public class Buscaminas {
         }
 
         tabJugador.printTablero(tabJugador, tabJugador.getCaselles(), jugador);
+
+        hasGuanyat(tabJugador);
     }
 
     public void hasGuanyat(Tablero tabJugador){
@@ -40,7 +42,7 @@ public class Buscaminas {
         for (int i = 0; i < tabJugador.getCaselles().length; i++){
             for (int j = 0; j < tabJugador.getCaselles()[0].length; j++){
                 if (tabJugador.getCaselles()[i][j] instanceof Mina && tabJugador.getCaselles()[i][j].isEsBandera()){
-
+                    limit++;
                 }
             }
         }
