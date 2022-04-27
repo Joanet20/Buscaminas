@@ -97,6 +97,7 @@ public class Tablero {
     }
 
 
+    //Mètodes que guaden les caselles colindants d'una casella
     public void omplirColindantAdaltEsquerra (int x, int y, int i, int j, Casella[][] casellas){
         if (x-1 >= 0 && y-1 >= 0){
             casellas[i][j].getCasellesColindants().add(new Casella(x-1, y-1));
@@ -144,7 +145,7 @@ public class Tablero {
             casellas[i][j].getCasellesColindants().add(new Casella(x+1, y+1));
         }
     }
-
+    //
 
 
 
@@ -170,82 +171,112 @@ public class Tablero {
 
                 if (caselles[i][j] instanceof Mina){
 
-                    if ((i-1) >= 0 && (j-1) >= 0){
-                        if (caselles[i-1][j-1] == null){
-                            caselles[i-1][j-1] = new Numero(i-1, j-1, 1);
-                        } else if (caselles[i-1][j-1] instanceof Numero){
-                            ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
-                        }
-                    }
+                    generarNumeroAdaltEsquerra(i, j, caselles);
 
+                    generarNumeroAdalt(i, j, caselles);
 
-                    if ((j-1) >= 0){
-                        if (caselles[i][j-1] == null){
-                            caselles[i][j-1] = new Numero(i, j-1, 1);
-                        } else if (caselles[i][j-1] instanceof Numero){
-                            ((Numero) caselles[i][j-1]).sumarMinaColindant();
-                        }
-                    }
+                    generarNumeroAdaltDreta(i, j, caselles);
 
+                    generarNumeroEsquerra(i, j, caselles);
 
-                    if ((i+1) < caselles.length && (j-1) >= 0){
-                        if (caselles[i+1][j-1] == null){
-                            caselles[i+1][j-1] = new Numero(i+1, j-1, 1);
-                        } else if (caselles[i+1][j-1] instanceof Numero){
-                            ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
-                        }
-                    }
+                    generarNumeroDreta(i, j, caselles);
 
+                    generarNumeroAbaixEsquerra(i, j, caselles);
 
-                    if ((i-1) >= 0){
-                        if (caselles[i-1][j] == null){
-                            caselles[i-1][j] = new Numero(i-1, j, 1);
-                        } else if (caselles[i-1][j] instanceof Numero){
-                            ((Numero) caselles[i-1][j]).sumarMinaColindant();
-                        }
-                    }
+                    generarNumeroAbaix(i, j, caselles);
 
-
-
-                    if ((i+1) < caselles.length){
-                        if (caselles[i+1][j] == null){
-                            caselles[i+1][j] = new Numero(i+1, j, 1);
-                        } else if (caselles[i+1][j] instanceof Numero){
-                            ((Numero) caselles[i+1][j]).sumarMinaColindant();
-                        }
-                    }
-
-
-                    if ((i-1) >= 0 && (j+1) < caselles[0].length){
-                        if (caselles[i-1][j+1] == null){
-                            caselles[i-1][j+1] = new Numero(i-1, j+1, 1);
-                        } else if (caselles[i-1][j+1] instanceof Numero){
-                            ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
-                        }
-                    }
-
-
-                    if ((j+1) < caselles[0].length){
-                        if (caselles[i][j+1] == null){
-                            caselles[i][j+1] = new Numero(i, j+1, 1);
-                        } else if (caselles[i][j+1] instanceof Numero){
-                            ((Numero) caselles[i][j+1]).sumarMinaColindant();
-                        }
-                    }
-
-
-                    if ((i+1) < caselles.length && (j+1) < caselles[0].length){
-                        if (caselles[i+1][j+1] == null){
-                            caselles[i+1][j+1] = new Numero(i+1, j+1, 1);
-                        } else if (caselles[i+1][j+1] instanceof Numero){
-                            ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
-                        }
-                    }
+                    generarNumeroAbaixDreta(i, j, caselles);
 
                 }
             }
         }
     }
+
+    //Metodes que generen números
+
+    public void generarNumeroAdaltEsquerra (int i, int j, Casella[][] caselles){
+        if ((i-1) >= 0 && (j-1) >= 0){
+            if (caselles[i-1][j-1] == null){
+                caselles[i-1][j-1] = new Numero(i-1, j-1, 1);
+            } else if (caselles[i-1][j-1] instanceof Numero){
+                ((Numero) caselles[i-1][j-1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroAdalt (int i, int j, Casella[][] caselles){
+        if ((j-1) >= 0){
+            if (caselles[i][j-1] == null){
+                caselles[i][j-1] = new Numero(i, j-1, 1);
+            } else if (caselles[i][j-1] instanceof Numero){
+                ((Numero) caselles[i][j-1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroAdaltDreta (int i, int j, Casella[][] caselles){
+        if ((i+1) < caselles.length && (j-1) >= 0){
+            if (caselles[i+1][j-1] == null){
+                caselles[i+1][j-1] = new Numero(i+1, j-1, 1);
+            } else if (caselles[i+1][j-1] instanceof Numero){
+                ((Numero) caselles[i+1][j-1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroEsquerra (int i, int j, Casella[][] caselles){
+        if ((i-1) >= 0){
+            if (caselles[i-1][j] == null){
+                caselles[i-1][j] = new Numero(i-1, j, 1);
+            } else if (caselles[i-1][j] instanceof Numero){
+                ((Numero) caselles[i-1][j]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroDreta (int i, int j, Casella[][] caselles){
+        if ((i+1) < caselles.length){
+            if (caselles[i+1][j] == null){
+                caselles[i+1][j] = new Numero(i+1, j, 1);
+            } else if (caselles[i+1][j] instanceof Numero){
+                ((Numero) caselles[i+1][j]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroAbaixEsquerra (int i, int j, Casella[][] caselles){
+        if ((i-1) >= 0 && (j+1) < caselles[0].length){
+            if (caselles[i-1][j+1] == null){
+                caselles[i-1][j+1] = new Numero(i-1, j+1, 1);
+            } else if (caselles[i-1][j+1] instanceof Numero){
+                ((Numero) caselles[i-1][j+1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroAbaix (int i, int j, Casella[][] caselles){
+        if ((j+1) < caselles[0].length){
+            if (caselles[i][j+1] == null){
+                caselles[i][j+1] = new Numero(i, j+1, 1);
+            } else if (caselles[i][j+1] instanceof Numero){
+                ((Numero) caselles[i][j+1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    public void generarNumeroAbaixDreta (int i, int j, Casella[][] caselles){
+        if ((i+1) < caselles.length && (j+1) < caselles[0].length){
+            if (caselles[i+1][j+1] == null){
+                caselles[i+1][j+1] = new Numero(i+1, j+1, 1);
+            } else if (caselles[i+1][j+1] instanceof Numero){
+                ((Numero) caselles[i+1][j+1]).sumarMinaColindant();
+            }
+        }
+    }
+
+    //
+
+
 
     public void generarBlancs(Casella[][] caselles){
         for (int i = 0; i < caselles.length; i++){
